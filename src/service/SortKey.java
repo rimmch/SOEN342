@@ -1,0 +1,12 @@
+package service;
+
+public enum SortKey {
+    DEPARTURE_TIME,
+    ARRIVAL_TIME,
+    DURATION,
+    PRICE_FIRST_CLASS,
+    PRICE_SECOND_CLASS,
+    DEPARTURE_STATION,
+    ARRIVAL_STATION,
+    TRAIN_TYPE
+}
