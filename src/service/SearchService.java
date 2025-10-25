@@ -82,4 +82,4 @@ public class SearchService {
     private long calculateDuration(Route route) {
         return route.getArrivalTime().toSecondOfDay() - route.getDepartureTime().toSecondOfDay();
     }
-}
+}w

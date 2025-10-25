@@ -45,7 +45,7 @@ public class SearchCriteria {
         this.departureDate = departureDate;
     }
 
-    public LocalTime getPreferredTime() {
+    public LocalTime wgetPreferredTime() {
         return preferredTime;
     }
 
