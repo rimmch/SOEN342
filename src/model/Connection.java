@@ -3,6 +3,7 @@ package model;
 import java.time.LocalTime;
 import java.util.List;
 
+// iteration1
 public class Connection {
     private List<Route> routes;
     private LocalTime totalDepartureTime;
