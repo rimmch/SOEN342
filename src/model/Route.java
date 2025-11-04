@@ -13,6 +13,7 @@ public class Route {
     private Money priceSecondClass;
     private DaySet dayPattern;
 
+    // REVOIR SI ROUTEID SHOULD BE IN PARAM
     public Route(String routeId, Station departureStation, Station arrivalStation,
                  LocalTime departureTime, LocalTime arrivalTime, TrainType trainType,
                  Money priceFirstClass, Money priceSecondClass, DaySet dayPattern) {
