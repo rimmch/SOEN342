@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Money {
-    private BigDecimal amount;
-    private String currency;
+    private final BigDecimal amount;
+    private final String currency;
 
     public Money(BigDecimal amount, String currency) {
         this.amount = amount.setScale(2, RoundingMode.HALF_UP);
