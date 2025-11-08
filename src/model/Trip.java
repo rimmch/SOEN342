@@ -3,16 +3,17 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Trip {
-    private final String tripId;
+    private static final AtomicLong idGenerator = new AtomicLong(1);
+    private final long tripId;
     private List<Reservation> reservations;
     private Connection connection;
     private LocalDate travelDate;
 
     public Trip(Connection connection, LocalDate travelDate) {
-        this.tripId = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        gitthis.tripId = idGenerator.getAndIncrement();
         this.reservations = new ArrayList<>();
         this.connection = connection;
         this.travelDate = travelDate;
@@ -22,7 +23,7 @@ public class Trip {
         reservations.add(reservation);
     }
 
-    public String getTripId() {
+    public long getTripId() {
         return tripId;
     }
 
