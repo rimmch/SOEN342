@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-// TO READ CSV FILE - ITERATION 1
 public class CSVRouteParser {
 
     private static final DateTimeFormatter TIME_FORMATTER =
@@ -22,13 +21,12 @@ public class CSVRouteParser {
         List<Route> routes = new ArrayList<>();
 
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
-            String header = reader.readLine(); // skip header line
-            if (header == null) {
-                return routes; // empty file
-            }
+            String header = reader.readLine(); // skip header
+            if (header == null) return routes;
 
             String line;
-            int lineNo = 1;   // header = line 1
+            int lineNo = 1;
+
             while ((line = reader.readLine()) != null) {
                 lineNo++;
                 if (line.isBlank()) continue;
@@ -43,30 +41,28 @@ public class CSVRouteParser {
         return routes;
     }
 
-
+    
     private Route parseRouteLine(String line, int lineNo) {
         try {
-            String[] fields = line.split(",", -1);  // keep empty fields
-
-            if (fields.length < 9) {
-                System.err.println("Skipping line " + lineNo +
-                                   " (expected at least 9 columns, got " + fields.length + ")");
+            String[] f = line.split(",", -1);
+            if (f.length < 9) {
+                System.err.println("Line " + lineNo + " skipped: expected 9 columns.");
                 return null;
             }
 
-            String routeId       = fields[0].trim();
-            String depCity       = fields[1].trim();
-            String arrCity       = fields[2].trim();
-            String depTimeStr    = fields[3].trim();
-            String arrTimeStr    = fields[4].trim();
-            String trainTypeStr  = fields[5].trim();
-            String daysStr       = fields[6].trim();
-            String firstPriceStr = fields[7].trim();
-            String secondPriceStr= fields[8].trim();
+            String routeId       = f[0].trim();
+            String depCity       = f[1].trim();
+            String arrCity       = f[2].trim();
+            String depTimeStr    = f[3].trim();
+            String arrTimeStr    = f[4].trim();
+            String trainTypeStr  = f[5].trim();
+            String daysStr       = f[6].trim();
+            String firstPriceStr = f[7].trim();
+            String secondPriceStr= f[8].trim();
 
-            // Build stations 
-            Station departureStation = parseStation(depCity);
-            Station arrivalStation   = parseStation(arrCity);
+            // Build Station objects
+            Station departureStation = makeStation(depCity);
+            Station arrivalStation   = makeStation(arrCity);
 
             // Times
             LocalTime departureTime = LocalTime.parse(depTimeStr, TIME_FORMATTER);
@@ -76,14 +72,14 @@ public class CSVRouteParser {
             TrainType trainType =
                     TrainType.valueOf(trainTypeStr.toUpperCase().replace(" ", "_"));
 
-            // Money
-            Money priceFirst  = new Money(new BigDecimal(firstPriceStr),  "EUR");
+            // Prices
+            Money priceFirst  = new Money(new BigDecimal(firstPriceStr), "EUR");
             Money priceSecond = new Money(new BigDecimal(secondPriceStr), "EUR");
 
-            // Days of operation 
+            // Days pattern
             DaySet dayPattern = parseDayPattern(daysStr);
 
-            // Create Route
+            // Build Route
             return new Route(
                     routeId,
                     departureStation,
@@ -95,48 +91,48 @@ public class CSVRouteParser {
                     priceSecond,
                     dayPattern
             );
+
         } catch (Exception e) {
-            System.err.println("Error parsing line " + lineNo + ": " + e.getMessage());
-            return null; // skip invalid line
+            System.err.println("Error on line " + lineNo + ": " + e.getMessage());
+            return null;
         }
     }
 
     
-    private Station parseStation(String city) {
-        String name = city.trim();
-        String country = ""; 
-        String code = generateStationCode(name);
-        
-        return new Station(name, city.trim(), country, code);
+    private Station makeStation(String cityName) {
+        String name = cityName;
+        String city = cityName;
+        String country = "Unknown";
+        String code = generateStationCode(cityName);
+        return new Station(name, city, country, code);
     }
 
-    //3-letter code from the station name
+  
+     // Generate 3-letter station code
     private String generateStationCode(String stationName) {
         String letters = stationName.toUpperCase().replaceAll("[^A-Z]", "");
-        if (letters.isEmpty()) {
-            return "XXX";
-        }
+        if (letters.isEmpty()) return "XXX";
         return letters.substring(0, Math.min(3, letters.length()));
     }
 
     
     private DaySet parseDayPattern(String token) {
-        String s = token.trim();
+        token = token.trim();
 
-        // Case 1: pure 7-bit binary string "1111100" (Mon..Sun)
-        if (s.matches("[01]{7}")) {
-            int mask = Integer.parseInt(s, 2);
-            return new DaySet(mask);
+        // Binary day mask "1111100"
+        if (token.matches("[01]{7}")) {
+            return new DaySet(Integer.parseInt(token, 2));
         }
 
-        // Normalize
-        s = s.replaceAll("\\s+", ""); // remove spaces
+        // Remove spaces
+        token = token.replaceAll("\\s+", "");
 
-        // Case 2: range like "Fri-Sun", "Mon-Fri"
-        if (s.contains("-")) {
-            String[] parts = s.split("-");
-            int start = dayIndex(parts[0]);
-            int end   = dayIndex(parts[1]);
+        // Range: "Fri-Sun"
+        if (token.contains("-")) {
+            String[] p = token.split("-");
+            int start = dayIndex(p[0]);
+            int end   = dayIndex(p[1]);
+
             int mask = 0;
             for (int i = start; i <= end; i++) {
                 mask |= (1 << i);
@@ -144,17 +140,18 @@ public class CSVRouteParser {
             return new DaySet(mask);
         }
 
-        // Case 3: list like "Mon,Wed,Fri"
+        // List: "Mon,Wed,Fri"
         int mask = 0;
-        for (String part : s.split(",")) {
+        for (String part : token.split(",")) {
             mask |= (1 << dayIndex(part));
         }
+
         return new DaySet(mask);
     }
 
-   
-    private int dayIndex(String dayToken) {
-        String d = dayToken.substring(0, Math.min(3, dayToken.length())).toLowerCase();
+    // Monday=0 … Sunday=6 
+    private int dayIndex(String d) {
+        d = d.substring(0, Math.min(3, d.length())).toLowerCase();
         switch (d) {
             case "mon": return 0;
             case "tue": return 1;
@@ -164,7 +161,7 @@ public class CSVRouteParser {
             case "sat": return 5;
             case "sun": return 6;
             default:
-                throw new IllegalArgumentException("Unknown day token: " + dayToken);
+                throw new IllegalArgumentException("Invalid day: " + d);
         }
     }
 }
