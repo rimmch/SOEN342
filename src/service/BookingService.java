@@ -1,4 +1,4 @@
-package service;
+/*package service;
 
 import model.*;
 
@@ -48,3 +48,5 @@ public class BookingService {
         return parts[parts.length - 1];
     }
 }
+
+ */

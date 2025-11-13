@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,4 +46,4 @@ public class Trip {
     public boolean isPast() {
         return travelDate.isBefore(LocalDate.now());
     }
-}
+}*/

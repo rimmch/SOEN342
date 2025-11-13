@@ -1,4 +1,4 @@
-package service;
+/*package service;
 
 import model.*;
 import repository.RouteCatalogue;
@@ -83,3 +83,5 @@ public class SearchService {
         return route.getArrivalTime().toSecondOfDay() - route.getDepartureTime().toSecondOfDay();
     }
 }
+
+ */

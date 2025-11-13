@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 public class Reservation {
     private Ticket ticket;
@@ -17,3 +17,5 @@ public class Reservation {
         return travelerName;
     }
 }
+
+ */

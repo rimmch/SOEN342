@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
     import java.util.ArrayList;
     import java.util.List;
@@ -43,3 +43,5 @@ package model;
             return new ArrayList<>(trips);
         }
     }
+
+ */

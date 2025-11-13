@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 import java.time.LocalTime;
 
@@ -20,3 +20,5 @@ public class LayoverPolicy {
         return time.isBefore(DAYTIME_START) || time.isAfter(DAYTIME_END);
     }
 }
+
+ */

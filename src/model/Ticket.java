@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 public class Ticket {
     private static int ticketCounter = 1000;
@@ -43,3 +43,5 @@ public class Ticket {
         return ticketClass;
     }
 }
+
+ */
