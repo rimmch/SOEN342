@@ -1,4 +1,4 @@
-/*package model;
+package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,19 +7,31 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class Trip {
     private static final AtomicLong idGenerator = new AtomicLong(1);
+    
     private final long tripId;
     private List<Reservation> reservations;
     private Connection connection;
     private LocalDate travelDate;
 
     public Trip(Connection connection, LocalDate travelDate) {
-        gitthis.tripId = idGenerator.getAndIncrement();
+
+        if (connection == null) {
+            throw new illegalArgumentException("Connection cannot be null");
+        }
+        if (travelDate == null) {
+            throw new IllegalArgumentException("Travel date cannot be null");
+        }
+        
+        this.tripId = idGenerator.getAndIncrement();
         this.reservations = new ArrayList<>();
         this.connection = connection;
         this.travelDate = travelDate;
     }
 
     public void addReservation(Reservation reservation) {
+         if (reservation == null) {
+            throw new IllegalArgumentException("Reservation cannot be null");
+        }
         reservations.add(reservation);
     }
 
@@ -40,10 +52,17 @@ public class Trip {
     }
 
     public boolean isFuture() {
-        return travelDate.isAfter(LocalDate.now()) || travelDate.isEqual(LocalDate.now());
+        LocalDate today = LocalDate.now();
+        return travelDate.isAfter(today) || travelDate.isEqual(today);
     }
 
     public boolean isPast() {
         return travelDate.isBefore(LocalDate.now());
     }
-}*/
+
+    @Override
+    public String toString() {
+        return "Trip " + tripId + " on " + travelDate +
+               " (" + reservations.size() + " reservation(s))";
+    }
+}
