@@ -1,21 +1,36 @@
-/*package model;
+package model;
 
     import java.util.ArrayList;
     import java.util.List;
     import java.util.stream.Collectors;
 
     public class Client {
-        private String lastName;
-        private String id;
-        private List<Trip> trips;
+        private final String lastName;
+        private final String id;
+        private final List<Trip> trips;
 
         public Client(String lastName, String id) {
+
+            if (lastName == null || lastName.isBlank()) {
+                throw new IllegalArgumentException("Last name cannot be null or blank");
+            }
+
+            if (id == null || id.isBlank()) {
+                throw new IllegalArgumentException("Client id cannot be null or blank");
+           
+            }
+            
+
+            
             this.lastName = lastName;
             this.id = id;
             this.trips = new ArrayList<>();
         }
 
         public void addTrip(Trip trip) {
+            if (trip == null) {
+               throw new IllegalArgumentException("Trip cannot be null");
+            }
             trips.add(trip);
         }
 
@@ -42,6 +57,16 @@
         public List<Trip> getAllTrips() {
             return new ArrayList<>(trips);
         }
+
+        @Override
+    public String toString() {
+        return "Client{" +
+               "id='" + id + '\'' +
+               ", lastName='" + lastName + '\'' +
+               ", trips=" + trips.size() +
+               '}';
+        }
+        
     }
 
- */
+ 
