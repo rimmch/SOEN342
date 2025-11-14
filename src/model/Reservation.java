@@ -4,9 +4,9 @@ public class Reservation {
     private final Client client;
     private final Connection connection;
     private final Ticket ticket;
-    private final TravelClass travelClass;
+    private final TicketClass ticketClass;
 
-    public Reservation(Client clinent, Connection connection, Ticket ticket, TravelClass travelClass) {
+    public Reservation(Client client, Connection connection, Ticket ticket, TicketClass ticketClass) {
 
         if (client == null) {
             throw new IllegalArgumentException("Client cannot be null");
@@ -17,14 +17,14 @@ public class Reservation {
         if (ticket == null) {
             throw new IllegalArgumentException("Ticket cannot be null");
         }
-        if (travelClass == null) {
-            throw new IllegalArgumentException("Travel class cannot be null");
+        if (ticketClass == null) {
+            throw new IllegalArgumentException("Ticket class cannot be null");
         }
 
         this.client = client;
         this.connection = connection;
         this.ticket = ticket;
-        this.travelClass = travelClass;
+        this.ticketClass = ticketClass;
     }
 
     public Client getClient() {
@@ -41,8 +41,8 @@ public class Reservation {
         return ticket;
     }
 
-    public TravelClass getClass() {
-        return travelClass;
+    public TicketClass getTicketClass() {
+        return ticketClass;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Reservation {
                "client=" + client +
                ", connection=" + connection +
                ", ticket=" + ticket +
-               ", travelClass=" + travelClass +
+               ", ticketClass=" + ticketClass +
                '}';
     }
 }
