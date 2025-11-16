@@ -9,14 +9,14 @@ public class Trip {
     private static final AtomicLong idGenerator = new AtomicLong(1);
     
     private final long tripId;
-    private List<Reservation> reservations;
-    private Connection connection;
+    private final List<Reservation> reservations;
+    private final Connection connection;
     private LocalDate travelDate;
 
     public Trip(Connection connection, LocalDate travelDate) {
 
         if (connection == null) {
-            throw new illegalArgumentException("Connection cannot be null");
+            throw new IllegalArgumentException("Connection cannot be null");
         }
         if (travelDate == null) {
             throw new IllegalArgumentException("Travel date cannot be null");
