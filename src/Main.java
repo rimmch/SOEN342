@@ -1,9 +1,11 @@
 
 
 import model.*;
+import service.*;
 import parser.CSVRouteParser;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,5 +55,77 @@ public class Main {
             System.out.println(" Exception occurred: " + e.getMessage());
             e.printStackTrace();
         }
+
+        try {
+            System.out.println("=== ITERATION 2 TEST START ===");
+
+            // 1) Load CSV as in iteration 1
+            CSVRouteParser parser = new CSVRouteParser();
+            List<Route> routes = parser.parseRoutes("eu_rail_network.csv");
+
+            if (routes.size() < 2) {
+                System.out.println(" Not enough routes to create a connection.");
+                return;
+            }
+
+            // Build a sample connection from first 2 routes
+            Connection connection = new Connection(List.of(routes.get(0), routes.get(1)));
+
+            System.out.println("\n--- Loaded Sample Connection ---");
+            System.out.println(connection);
+
+            // 2) Create booking service
+            BookingService service = new BookingService();
+
+            LocalDate travelDate = LocalDate.now().plusDays(5);
+
+            // 3) Create traveler info
+            TravelerInfo t1 = new TravelerInfo("Alice Dupont", 28, "ID-A1");
+
+            Trip soloTrip = service.bookTrip(
+                    connection,
+                    travelDate,
+                    t1,
+                    TicketClass.SECOND_CLASS
+            );
+
+            System.out.println("\n=== SOLO BOOKING ===");
+            System.out.println(soloTrip);
+            soloTrip.getReservations().forEach(System.out::println);
+
+            // 4) Group trip
+            TravelerInfo f1 = new TravelerInfo("Karim Haddad", 45, "ID-F1");
+            TravelerInfo f2 = new TravelerInfo("Leila Haddad", 42, "ID-M1");
+            TravelerInfo c1 = new TravelerInfo("Nour Haddad", 16, "ID-C1");
+            TravelerInfo c2 = new TravelerInfo("Rami Haddad", 12, "ID-C2");
+
+            List<TravelerInfo> family = List.of(f1, f2, c1, c2);
+
+            Trip familyTrip = service.bookGroupTrip(
+                    connection,
+                    travelDate.plusDays(1),
+                    family,
+                    TicketClass.FIRST_CLASS
+            );
+
+            System.out.println("\n=== FAMILY BOOKING ===");
+            System.out.println(familyTrip);
+            familyTrip.getReservations().forEach(System.out::println);
+
+            // 5) Check client history
+            System.out.println("\n=== CLIENT HISTORY ===");
+            Client client = service.getClient("Dupont", "ID-A1");
+            if (client != null) {
+                System.out.println(client);
+                System.out.println("Current trips: " + client.getCurrentTrips());
+            }
+
+            System.out.println("\n=== ITERATION 2 TEST DONE ===");
+        }
+        catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+            e.printStackTrace();
+        }
+
     }
 }
