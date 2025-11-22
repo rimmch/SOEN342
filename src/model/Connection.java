@@ -100,4 +100,47 @@ public class Connection {
     public int getNumberOfTransfers() {
         return routes.size() - 1;
     }
+
+    public boolean respectsLayoverPolicy() {
+        if (routes.size() <= 1) {
+            return true;
+        }
+
+        List<Integer> layovers = getLayoverDurationsMinutes();
+
+        for (int i = 0; i < layovers.size(); i++) {
+            int layover = layovers.get(i);
+            LocalTime arrival = routes.get(i).getArrivalTime();
+
+            boolean isAfterHours =
+                    arrival.isAfter(LocalTime.of(22, 0)) ||
+                    arrival.isBefore(LocalTime.of(6, 0));
+
+            if (isAfterHours) {
+                if (layover > 30) return false;
+            } else {
+                if (layover < 60 || layover > 120) return false;
+            }
+        }
+
+        return true;
+    }
+
+    public List<Integer> getLayoverDurationsMinutes() {
+        java.util.ArrayList<Integer> layovers = new java.util.ArrayList<>();
+
+        for (int i = 0; i < routes.size() - 1; i++) {
+            LocalTime arr = routes.get(i).getArrivalTime();
+            LocalTime dep = routes.get(i + 1).getDepartureTime();
+
+            int minutes = (int) java.time.Duration.between(arr, dep).toMinutes();
+
+            if (minutes < 0) {
+                minutes += 24 * 60;
+            }
+
+            layovers.add(minutes);
+        }
+        return layovers;
+    }
 }

@@ -1,7 +1,6 @@
 package model;
 
 public enum TrainType {
-
     HIGH_SPEED,
     INTERCITY,
     REGIONAL,
@@ -14,5 +13,13 @@ public enum TrainType {
     INTERCITÉS,
     AVE,
     TGV,
-    EUROMED
+    EUROMED,
+    IC,
+    EUROCITY,
+    ITALO,
+    RAILJET,
+    RE,
+    EUROSTAR,
+    THALYS,
+    REGIOEXPRESS
 }

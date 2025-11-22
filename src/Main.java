@@ -1,8 +1,16 @@
 
+import model.*;
+import service.*;
+import parser.CSVRouteParser;
+import persistence.DataLoader;
+
+import java.time.LocalDate;
+import java.util.*;
 
 import model.*;
 import service.*;
 import parser.CSVRouteParser;
+import persistence.DataLoader;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -10,9 +18,20 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         try {
+            // Load train route data from CSV into database on application startup
+            System.out.println("=== Loading train route data into database ===");
+            DataLoader.loadRoutes("src/db/eu_rail_network.csv");
+            System.out.println("=== Database loading complete ===\n");
+        } catch (Exception e) {
+            System.err.println("ERROR: Failed to load data from CSV: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        // ==================== ITERATION 1 ====================
+        try {
             System.out.println("=== ITERATION 1 TEST ===");
 
-            String csvPath = "eu_rail_network.csv";
+            String csvPath = "src/db/eu_rail_network.csv";
 
             CSVRouteParser parser = new CSVRouteParser();
             List<Route> routes = parser.parseRoutes(csvPath);
@@ -29,7 +48,6 @@ public class Main {
             System.out.println(r1.toPublicString());
             System.out.println("Duration: " + r1.getDurationMinutes() + " minutes");
 
-            // Test second route if available
             if (routes.size() > 1) {
                 Route r2 = routes.get(1);
 
@@ -37,7 +55,6 @@ public class Main {
                 System.out.println(r2.toPublicString());
                 System.out.println("Duration: " + r2.getDurationMinutes() + " minutes");
 
-                // Build a connection
                 Connection conn = new Connection(List.of(r1, r2));
 
                 System.out.println("\n--- Test Connection (2 routes) ---");
@@ -56,34 +73,70 @@ public class Main {
             e.printStackTrace();
         }
 
+
+        // ==================== ITERATION 2 — UPDATED ====================
         try {
             System.out.println("=== ITERATION 2 TEST START ===");
 
-            // 1) Load CSV as in iteration 1
             CSVRouteParser parser = new CSVRouteParser();
-            List<Route> routes = parser.parseRoutes("eu_rail_network.csv");
+            List<Route> routes = parser.parseRoutes("src/db/eu_rail_network.csv");
 
             if (routes.size() < 2) {
-                System.out.println(" Not enough routes to create a connection.");
+                System.out.println("Not enough routes.");
                 return;
             }
 
-            // Build a sample connection from first 2 routes
-            Connection connection = new Connection(List.of(routes.get(0), routes.get(1)));
+            System.out.println("Searching for a valid 2-leg connection...");
 
-            System.out.println("\n--- Loaded Sample Connection ---");
-            System.out.println(connection);
+            BookingService probe = new BookingService();
+            LocalDate probeDate = LocalDate.now().plusDays(5);
 
-            // 2) Create booking service
+            Connection validConnection = null;
+
+            outer:
+            for (int i = 0; i < routes.size(); i++) {
+                for (int j = i + 1; j < routes.size(); j++) {
+
+                    Route a = routes.get(i);
+                    Route b = routes.get(j);
+
+                    // Ensure city continuity
+                    if (!a.getArrivalStation().getCity()
+                            .equals(b.getDepartureStation().getCity())) continue;
+
+                    Connection candidate = new Connection(List.of(a, b));
+                    TravelerInfo dummy = new TravelerInfo("Temp", 30, "ID-T");
+
+                    try {
+                        // If this passes, the connection is valid
+                        probe.bookTrip(candidate, probeDate, dummy, TicketClass.SECOND_CLASS);
+                        validConnection = candidate;
+
+                        System.out.println("VALID connection found: "
+                                + a.getRouteId() + " → " + b.getRouteId());
+                        break outer;
+
+                    } catch (Exception ignored) {}
+                }
+            }
+
+            if (validConnection == null) {
+                System.out.println("Could not find a valid connection.");
+                return;
+            }
+
+            // print connection
+            System.out.println("\n--- Loaded Valid Connection ---");
+            System.out.println(validConnection);
+
+            // Now use it for real booking
             BookingService service = new BookingService();
-
             LocalDate travelDate = LocalDate.now().plusDays(5);
 
-            // 3) Create traveler info
             TravelerInfo t1 = new TravelerInfo("Alice Dupont", 28, "ID-A1");
 
             Trip soloTrip = service.bookTrip(
-                    connection,
+                    validConnection,
                     travelDate,
                     t1,
                     TicketClass.SECOND_CLASS
@@ -93,7 +146,7 @@ public class Main {
             System.out.println(soloTrip);
             soloTrip.getReservations().forEach(System.out::println);
 
-            // 4) Group trip
+            // Family booking
             TravelerInfo f1 = new TravelerInfo("Karim Haddad", 45, "ID-F1");
             TravelerInfo f2 = new TravelerInfo("Leila Haddad", 42, "ID-M1");
             TravelerInfo c1 = new TravelerInfo("Nour Haddad", 16, "ID-C1");
@@ -102,7 +155,7 @@ public class Main {
             List<TravelerInfo> family = List.of(f1, f2, c1, c2);
 
             Trip familyTrip = service.bookGroupTrip(
-                    connection,
+                    validConnection,
                     travelDate.plusDays(1),
                     family,
                     TicketClass.FIRST_CLASS
@@ -112,7 +165,7 @@ public class Main {
             System.out.println(familyTrip);
             familyTrip.getReservations().forEach(System.out::println);
 
-            // 5) Check client history
+            // Check history
             System.out.println("\n=== CLIENT HISTORY ===");
             Client client = service.getClient("Dupont", "ID-A1");
             if (client != null) {
@@ -121,11 +174,10 @@ public class Main {
             }
 
             System.out.println("\n=== ITERATION 2 TEST DONE ===");
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
             e.printStackTrace();
         }
-
     }
 }
