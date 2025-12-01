@@ -60,7 +60,7 @@ public class TestDataLoader {
         
         // Test 3: Try loading data from CSV
         System.out.println("\n3. Testing CSV file loading...");
-        String csvPath = "eu_rail_network.csv"; // Use relative path from project root
+        String csvPath = "src/db/eu_rail_network.csv"; // Use relative path from project root
         
         // Check if file exists
         java.io.File csvFile = new java.io.File(csvPath);

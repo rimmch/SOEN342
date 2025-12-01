@@ -1,7 +1,9 @@
 package service;
 
 import model.*;
+import persistence.TripRepository;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,19 @@ import java.util.Map;
 
 public class BookingService {
     private final Map<String, Client> clients = new HashMap<>();
+    private TripRepository tripRepository;
+
+    public BookingService() {
+        try {
+            this.tripRepository = new TripRepository();
+            System.out.println("✓ Database persistence initialized successfully");
+        } catch (SQLException e) {
+            System.err.println("WARNING: Could not initialize database persistence: " + e.getMessage());
+            System.err.println("Bookings will be stored in memory only.");
+            e.printStackTrace();
+            this.tripRepository = null;
+        }
+    }
 
     /**
      * Convenience method for booking a single traveler.
@@ -60,6 +75,20 @@ public class BookingService {
             client.addTrip(trip);
         }
 
+        // Persist to database
+        if (tripRepository != null) {
+            try {
+                tripRepository.saveTrip(trip, travelers, ticketClass);
+                System.out.println("✓ Trip saved to database successfully");
+            } catch (SQLException e) {
+                System.err.println("ERROR: Failed to save trip to database: " + e.getMessage());
+                e.printStackTrace();
+                // Continue anyway - trip is still created in memory
+            }
+        } else {
+            System.err.println("WARNING: Database persistence not available. Trip stored in memory only.");
+        }
+
         return trip;
     }
 
@@ -69,7 +98,7 @@ public class BookingService {
         if (existing != null) {
             return existing;
         }
-        Client client = new Client(id, lastName);
+        Client client = new Client(lastName, id);
         clients.put(key, client);
         return client;
     }

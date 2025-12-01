@@ -27,3 +27,17 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Java Compiled Files ###
+*.class
+!**/bin/**/*.class
+
+### Root-level package folders (should only exist in src/ and bin/) ###
+/model/
+/parser/
+/persistence/
+/service/
+/repository/
+
+### Compiled files in src/ directory ###
+src/**/*.class

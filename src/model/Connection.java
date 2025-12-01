@@ -101,25 +101,27 @@ public class Connection {
         return routes.size() - 1;
     }
 
+    /**
+     * Checks if this connection respects the layover policy.
+     * Uses LayoverPolicy to validate all layovers between routes.
+     * 
+     * @return true if all layovers are acceptable, false otherwise
+     */
     public boolean respectsLayoverPolicy() {
+        // Direct routes (no transfers) always respect the policy
         if (routes.size() <= 1) {
             return true;
         }
 
         List<Integer> layovers = getLayoverDurationsMinutes();
 
+        // Check each layover using LayoverPolicy
         for (int i = 0; i < layovers.size(); i++) {
-            int layover = layovers.get(i);
-            LocalTime arrival = routes.get(i).getArrivalTime();
-
-            boolean isAfterHours =
-                    arrival.isAfter(LocalTime.of(22, 0)) ||
-                    arrival.isBefore(LocalTime.of(6, 0));
-
-            if (isAfterHours) {
-                if (layover > 30) return false;
-            } else {
-                if (layover < 60 || layover > 120) return false;
+            int layoverMinutes = layovers.get(i);
+            LocalTime arrivalTime = routes.get(i).getArrivalTime();
+            
+            if (!LayoverPolicy.isAcceptableLayover(layoverMinutes, arrivalTime)) {
+                return false;
             }
         }
 
