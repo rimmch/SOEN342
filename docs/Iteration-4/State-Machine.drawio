@@ -1,0 +1,241 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15" version="29.2.4">
+  <diagram name="Page-1" id="GGVOqikoWw99AhwKIArk">
+    <mxGraphModel dx="1975" dy="1087" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="330" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-2" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="349.5" y="110" as="sourcePoint" />
+            <mxPoint x="349.5" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Idle" vertex="1">
+          <mxGeometry height="60" width="120" x="290" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-5" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;span style=&quot;caret-color: rgb(43, 113, 180); color: rgb(43, 113, 180);&quot;&gt;Book a group trip&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="265" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-6" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="349.5" y="250" as="sourcePoint" />
+            <mxPoint x="349.5" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-7" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="connection.respectsLayoverPolicy()" vertex="1">
+          <mxGeometry height="190" width="205" x="209" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-8" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);&quot;&gt;[connection == null OR&lt;span class=&quot;Apple-converted-space&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);&quot;&gt;travelDate == null OR&lt;span class=&quot;Apple-converted-space&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;travelers == null/empty OR&lt;span class=&quot;Apple-converted-space&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;ticketClass == null]&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;travelers.isEmpty() OR&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="201" x="209" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-10" edge="1" parent="1" source="dmk_iHmjTjywRbnrsLQw-5" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=85;exitDy=40;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="dmk_iHmjTjywRbnrsLQw-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="410" />
+              <mxPoint x="310" y="430" />
+            </Array>
+            <mxPoint x="270" y="390" as="sourcePoint" />
+            <mxPoint x="170.5" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-11" edge="1" parent="1" source="dmk_iHmjTjywRbnrsLQw-8" style="endArrow=classic;html=1;rounded=0;entryX=0.091;entryY=0.069;entryDx=0;entryDy=0;entryPerimeter=0;" target="dmk_iHmjTjywRbnrsLQw-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="517" />
+              <mxPoint x="20" y="200" />
+            </Array>
+            <mxPoint x="133.03999999999996" y="517.04" as="sourcePoint" />
+            <mxPoint x="280" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-14" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="310" y="670" as="sourcePoint" />
+            <mxPoint x="310" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-15" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="311.15999999999997" y="930" as="sourcePoint" />
+            <mxPoint x="311.15999999999997" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[True]" vertex="1">
+          <mxGeometry height="30" width="60" x="30" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[False]" vertex="1">
+          <mxGeometry height="30" width="60" x="319.84000000000003" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-21" edge="1" parent="1" source="dmk_iHmjTjywRbnrsLQw-7" style="endArrow=classic;html=1;rounded=0;entryX=0.953;entryY=-0.011;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="656" y="840" />
+              <mxPoint x="655.64" y="190" />
+            </Array>
+            <mxPoint x="566.955" y="494.4200000000001" as="sourcePoint" />
+            <mxPoint x="399.9999999999999" y="190.34000000000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[False]" vertex="1">
+          <mxGeometry height="30" width="60" x="480" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[True]" vertex="1">
+          <mxGeometry height="30" width="60" x="319.84" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-28" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="309.41" y="1070" as="sourcePoint" />
+            <mxPoint x="309.41" y="1150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Traveler Information" vertex="1">
+          <mxGeometry height="60" width="120" x="249.5" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-31" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;font color=&quot;#2b71b4&quot;&gt;&lt;span style=&quot;caret-color: rgb(43, 113, 180);&quot;&gt;Extract last name&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="224.5" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-33" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="308.90999999999997" y="1210" as="sourcePoint" />
+            <mxPoint x="308.90999999999997" y="1290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-34" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;font color=&quot;#619dd7&quot;&gt;&lt;span style=&quot;caret-color: rgb(97, 157, 215);&quot;&gt;Get or Create a client&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="224.5" y="1410" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-35" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="308.90999999999997" y="1330" as="sourcePoint" />
+            <mxPoint x="308.90999999999997" y="1410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-36" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;span style=&quot;caret-color: rgb(43, 113, 180); color: rgb(43, 113, 180);&quot;&gt;Create new Ticket&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="165.5" x="224.5" y="1530" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-37" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="308.90999999999997" y="1450" as="sourcePoint" />
+            <mxPoint x="308.90999999999997" y="1530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-38" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;font color=&quot;#2b71b4&quot;&gt;&lt;span style=&quot;caret-color: rgb(43, 113, 180);&quot;&gt;Create New Trip&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="209.84" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-40" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;font color=&quot;#619dd7&quot;&gt;&lt;span style=&quot;caret-color: rgb(97, 157, 215);&quot;&gt;Create new reservation&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="181.25" x="228.75" y="1650" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-41" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="313.15999999999997" y="1570" as="sourcePoint" />
+            <mxPoint x="313.15999999999997" y="1650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-42" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;font color=&quot;#619dd7&quot;&gt;&lt;span style=&quot;caret-color: rgb(97, 157, 215);&quot;&gt;Add Reservation&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="181.25" x="232.75" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-43" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="317.15999999999997" y="1690" as="sourcePoint" />
+            <mxPoint x="317.15999999999997" y="1770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-44" parent="1" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" value="&lt;font color=&quot;#619dd7&quot;&gt;&lt;span style=&quot;caret-color: rgb(97, 157, 215);&quot;&gt;Add Trip&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="181.25" x="232.75" y="1890" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-45" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="317.15999999999997" y="1810" as="sourcePoint" />
+            <mxPoint x="317.15999999999997" y="1890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-46" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="dmk_iHmjTjywRbnrsLQw-29" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="1910" />
+              <mxPoint x="580" y="1550" />
+              <mxPoint x="560" y="1220" />
+            </Array>
+            <mxPoint x="410" y="1910" as="sourcePoint" />
+            <mxPoint x="450" y="1170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="After(each traveler)" vertex="1">
+          <mxGeometry height="30" width="60" x="480" y="1880" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-48" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Trip Repository" vertex="1">
+          <mxGeometry height="170" width="227" x="205.87" y="2020" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-49" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="318.79" y="1940" as="sourcePoint" />
+            <mxPoint x="318.79" y="2020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-51" edge="1" parent="1" source="dmk_iHmjTjywRbnrsLQw-48" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="dmk_iHmjTjywRbnrsLQw-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="2105" />
+              <mxPoint x="84.13" y="1268.5700000000002" />
+              <mxPoint x="130" y="380" />
+              <mxPoint x="50" y="350" />
+              <mxPoint x="150" y="240" />
+            </Array>
+            <mxPoint x="190" y="1272.8600000000001" as="sourcePoint" />
+            <mxPoint x="74.13" y="-590.0014285714285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[==null]" vertex="1">
+          <mxGeometry height="30" width="60" x="110" y="2070" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-54" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="318.65999999999997" y="2190" as="sourcePoint" />
+            <mxPoint x="318.65999999999997" y="2270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-55" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[!=null]" vertex="1">
+          <mxGeometry height="30" width="60" x="330" y="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-56" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Save Trip" vertex="1">
+          <mxGeometry height="60" width="120" x="259" y="2270" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-57" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="2110" />
+            </Array>
+            <mxPoint x="430" y="2110" as="sourcePoint" />
+            <mxPoint x="560" y="2170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-58" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[else]" vertex="1">
+          <mxGeometry height="30" width="60" x="460" y="2070" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-59" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Trip stored in memory only" vertex="1">
+          <mxGeometry height="60" width="120" x="500" y="2170" as="geometry" />
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-60" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="318.29" y="2330" as="sourcePoint" />
+            <mxPoint x="318.29" y="2430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-61" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="549" y="2430" />
+            </Array>
+            <mxPoint x="549.29" y="2220" as="sourcePoint" />
+            <mxPoint x="320" y="2430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dmk_iHmjTjywRbnrsLQw-62" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Return trip" vertex="1">
+          <mxGeometry height="60" width="120" x="200" y="2430" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
