@@ -1,6 +1,6 @@
 # SOEN 342 PROJECT
 
-TEAM MEMEBERS 
+TEAM MEMBERS 
 1. Rim Charafeddine - 40282994
 2. Anthony Mousaoubaa - 40284605
 3. Wassim Dakka - 40276235
